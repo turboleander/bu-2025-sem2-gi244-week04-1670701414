@@ -532,6 +532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005362562}
   - component: {fileID: 1005362561}
+  - component: {fileID: 1005362563}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -551,7 +552,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaaacf0af10d8d2478e4447046a9a593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs: []
+  animalPrefabs:
+  - {fileID: 7587843485912193849, guid: bf12d7e8aa34f904b94718225b0fb31e, type: 3}
+  - {fileID: 1597752839299849039, guid: d8c349fda6ef1ef46abbf190b93dfcaf, type: 3}
+  - {fileID: 8397276845326016710, guid: fd42e28c8b997ee469bcfb2ffeda2980, type: 3}
 --- !u!4 &1005362562
 Transform:
   m_ObjectHideFlags: 0
@@ -567,6 +571,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005362563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005362560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62efef67b9f6c344db608f344025fb1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyOutOfBound
 --- !u!1001 &1080256213
 PrefabInstance:
   m_ObjectHideFlags: 0
