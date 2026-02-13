@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,15 +11,27 @@ public class PlayerController : MonoBehaviour
 
     public GameObject FoodPrefab;
 
+    public float fireRate = 1f;
+    public float nextFireTime = 0f;
+
     private void Awake()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         shootAction = InputSystem.actions.FindAction("Shoot");
     }
+    private void OnEnable()
+    {
+        shootAction.Enable();
+    }
+    private void OnDisable()
+    {
+        shootAction.Disable();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        var shootInput = shootAction.ReadValue<float>();
 
         var hInput = moveAction.ReadValue<Vector2>().x;
         //if (transform.position.x < 10 || transform.position.x > -10)
@@ -34,9 +47,10 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
-        if (shootAction.triggered)
+        if (shootInput > 0 && Time.time > nextFireTime)
         {
             Instantiate(FoodPrefab, transform.position, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
         }
 
     }
